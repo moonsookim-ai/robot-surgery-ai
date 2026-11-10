@@ -84,6 +84,13 @@ p { margin: 0; }
 .nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
 .nav__links a:hover, .nav__links a.is-active { color: var(--text); }
 .nav__links a:hover::after, .nav__links a.is-active::after { transform: scaleX(1); }
+.nav__actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.nav__actions .btn { white-space: nowrap; }
+@media (max-width: 1280px) { .nav__inner { gap: 22px; } .nav__links { gap: 18px; } .nav__links a { font-size: .86rem; } }
+.nav__doc { padding: .6em 1em; }
+.nav__doc svg { width: 16px; height: 16px; }
+.mobile-menu .btn--doc { margin-top: 14px; justify-content: center; }
+.mobile-menu .btn--doc + .btn { margin-top: 8px; }
 .nav__burger { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); background: transparent; cursor: pointer; position: relative; }
 .nav__burger span { position: absolute; left: 13px; right: 13px; height: 1.5px; background: var(--text); transition: transform .3s; }
 .nav__burger span:first-child { top: 17px; }
@@ -117,7 +124,6 @@ p { margin: 0; }
 .hero__content { width: min(var(--container), 100% - 48px); margin: 0 auto; padding: 140px 0 40px; max-width: var(--container); }
 .hero__content > * { max-width: 640px; }
 .hero__content > .hero__title { max-width: 900px; }
-.hero__content > .hero__actions { max-width: 780px; }
 .hero__title { font-size: clamp(2.6rem, 6vw, 5.4rem); font-weight: 800; letter-spacing: -.045em; line-height: .98; margin-bottom: 1.6rem; }
 .hero__title .line { display: block; overflow: hidden; padding-bottom: .06em; }
 .hero__title .line > span { display: inline-block; animation: rise 1.3s var(--ease) both; }
@@ -321,7 +327,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border: 0; bo
 /* ---------- responsive ---------- */
 @media (max-width: 1080px) {
   .nav__links { display: none; }
-  .nav__cta { display: none; }
+  .nav__actions { display: none; }
   .nav__burger { display: block; }
   .platform__grid, .features, .news__grid { grid-template-columns: 1fr 1fr; }
   .split, .lab, .outcomes__grid, .company__grid, .demo__grid, .tabs__panel { grid-template-columns: 1fr; }
