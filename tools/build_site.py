@@ -53,8 +53,11 @@ NAV = [
     ("outcomes", "Outcomes"),
     ("training", "Training"),
     ("company", "Company"),
+    ("press", "Press"),
 ]
-PAGES = ["home"] + [slug for slug, _ in NAV] + ["demo", "404"]
+# press releases: src/pages/press/<slug>.html -> /press/<slug>/
+RELEASES = sorted((p.stem for p in (SRC / "press").glob("*.html")), reverse=False)
+PAGES = ["home"] + [slug for slug, _ in NAV] + [f"press/{r}" for r in RELEASES] + ["demo", "404"]
 
 LOGO = (
     '<svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">'
@@ -124,7 +127,7 @@ def footer(root: str) -> str:
         <p class="footer__tag">Precision beyond the human hand.</p>
       </div>
       <nav aria-label="Footer: Platform"><h4>Platform</h4><a href="{h('platform')}">Arc System</a><a href="{h('platform')}#microwrist">MicroWrist instruments</a><a href="{h('technology')}">Motion engine</a><a href="{h('training')}">Training</a></nav>
-      <nav aria-label="Footer: Company"><h4>Company</h4><a href="{h('company')}">About</a><a href="{h('company')}#news">Newsroom</a><a href="{root}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile (PDF)</a><a href="{h('company')}">Careers</a><a href="{h('demo')}">Contact</a></nav>
+      <nav aria-label="Footer: Company"><h4>Company</h4><a href="{h('company')}">About</a><a href="{h('press')}">Press releases</a><a href="{root}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile (PDF)</a><a href="{h('company')}">Careers</a><a href="{h('demo')}">Contact</a></nav>
       <nav aria-label="Footer: Resources"><h4>Resources</h4><a href="{h('outcomes')}">Clinical outcomes</a><a href="{h('specialties')}">Specialties</a><a href="{h('demo')}">Customer support</a><a href="{h('demo')}">Safety information</a></nav>
     </div>
     <div class="container footer__legal">
@@ -137,11 +140,15 @@ def footer(root: str) -> str:
 def page_hero(meta: dict, root: str, slug: str) -> str:
     img = meta.get("image", "media/hero-poster.jpg")
     pos = meta.get("position", "60% 50%")
-    label = dict(NAV).get(slug, meta.get("title", ""))
-    return f"""<section class="page-hero">
+    top = slug.split("/")[0]
+    label = dict(NAV).get(slug, meta.get("crumb", meta.get("title", "")))
+    trail = f'<a href="{href("home", root)}">Home</a><span aria-hidden="true">/</span>'
+    if "/" in slug:
+        trail += f'<a href="{href(top, root)}">{dict(NAV).get(top, top.title())}</a><span aria-hidden="true">/</span>'
+    return f"""<section class="page-hero{' page-hero--article' if '/' in slug else ''}">
       <div class="page-hero__media" aria-hidden="true"><img src="{root}assets/{img}" alt="" style="object-position:{pos}" width="1920" height="1080"></div>
       <div class="container page-hero__inner">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="{href('home', root)}">Home</a><span aria-hidden="true">/</span><span aria-current="page">{html.escape(label)}</span></nav>
+        <nav class="crumbs" aria-label="Breadcrumb">{trail}<span aria-current="page">{html.escape(label)}</span></nav>
         <p class="eyebrow">{meta.get('eyebrow', '')}</p>
         <h1>{meta.get('heading', '')}</h1>
         {f'<p class="page-hero__lead">{meta["lead"]}</p>' if meta.get('lead') else ''}
@@ -164,9 +171,29 @@ def next_link(slug: str, root: str) -> str:
     </section>"""
 
 
+def press_list(root: str, exclude: str = "", compact: bool = False) -> str:
+    items = []
+    for r in RELEASES:
+        if r == exclude:
+            continue
+        meta, _ = parse(SRC / "press" / f"{r}.html")
+        items.append((meta.get("date_iso", ""), r, meta))
+    items.sort(reverse=True)
+    cards = []
+    for _, r, m in items:
+        img = m.get("image", "media/hero-poster.jpg")
+        pos = m.get("position", "50% 50%")
+        media = "" if compact else f'<div class="release-card__media"><img src="{root}assets/{img}" alt="" style="object-position:{pos}" loading="lazy" width="1600" height="900"></div>'
+        cards.append(f"""<a class="release-card reveal{' release-card--compact' if compact else ''}" href="{root}press/{r}/">
+          {media}<div class="release-card__body"><span class="mono">{m.get('category', 'Press release')} · {m.get('date', '')}</span>
+          <h3>{m.get('heading', m.get('title', ''))}</h3>{'' if compact else f'<p>{m.get("lead", "")}</p>'}<span class="release-card__go">Read the release →</span></div>
+        </a>""")
+    return "\n".join(cards)
+
+
 def render(slug: str) -> tuple[Path, str]:
     meta, body = parse(SRC / f"{slug}.html")
-    root = "" if slug in ("home", "404") else "../"
+    root = "" if slug in ("home", "404") else "../" * (slug.count("/") + 1)
     # 404 is served from arbitrary depths, so it uses absolute site paths
     if slug == "404":
         root = "/"
@@ -174,6 +201,10 @@ def render(slug: str) -> tuple[Path, str]:
     full_title = SITE_NAME if slug == "home" else f"{title} | {SITE_NAME}"
     full_title = meta.get("full_title", full_title)
     desc = html.escape(meta.get("description", ""), quote=True)
+    if "{{press_list}}" in body:
+        body = body.replace("{{press_list}}", press_list(root))
+    if "{{more_releases}}" in body:
+        body = body.replace("{{more_releases}}", press_list(root, exclude=slug.split("/")[-1], compact=True))
     body = body.replace("{{root}}", root).replace("{{demo}}", href("demo", root))
     hero = page_hero(meta, root, slug) if slug not in ("home", "404") else ""
     nxt = next_link(slug, root)
@@ -198,7 +229,7 @@ def render(slug: str) -> tuple[Path, str]:
 <body class="page page--{slug}">
   <a class="skip" href="#main">Skip to content</a>
 
-  {header(slug, root)}
+  {header(slug.split("/")[0], root)}
 
   <main id="main">
     {hero}

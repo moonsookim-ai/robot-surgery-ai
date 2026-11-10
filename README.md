@@ -48,6 +48,8 @@
 | `/outcomes/` | `outcomes/index.html` | `src/pages/outcomes.html` |
 | `/training/` | `training/index.html` | `src/pages/training.html` |
 | `/company/` | `company/index.html` | `src/pages/company.html` |
+| `/press/` | `press/index.html` | `src/pages/press.html` (보도자료 목록 자동 생성) |
+| `/press/<slug>/` | `press/<slug>/index.html` | `src/pages/press/<slug>.html` (보도자료 1건) |
 | `/demo/` | `demo/index.html` | `src/pages/demo.html` |
 | (없는 주소) | `404.html` | `src/pages/404.html` |
 
@@ -66,6 +68,10 @@ robot-surgery-ai/
     ├── build_surgical_scene.py     # Blender 장면 절차 생성 + 렌더
     └── encode_hero.sh              # PNG 시퀀스 → 웹 영상/포스터
 ```
+
+### 보도자료 추가 방법
+
+`src/pages/press/<slug>.html` 파일을 만들고 맨 위 주석에 `title`, `heading`, `lead`, `category`, `date`, `date_iso`(정렬용), `image`를 적은 뒤 `python3 tools/build_site.py`를 실행하면 `/press/<slug>/` 페이지가 생기고 목록·관련 보도자료에 자동으로 추가됩니다.
 
 ### 페이지 빌드
 
@@ -93,6 +99,7 @@ python3 tools/build_site.py
 | **Outcomes `/outcomes/`** | 측정 항목(환자·외과의·병원) + 성과 지표 4개 (**예시 수치**, 각주 명시) |
 | **Training `/training/`** | 4단계 교육 과정 |
 | **Company `/company/`** | 회사 이야기, 주요 수치, 최신 소식(`#news`) |
+| **Press `/press/`** | 보도자료 목록(최신순 자동 정렬)과 미디어 자료. 개별 보도자료: ① Arc 2 출시(제품) ② 모션 엔진(기술·경쟁력) ③ 서울 트레이닝 센터(생태계) |
 | **Demo `/demo/`** | 데모 신청 폼 (프런트엔드 검증만, 서버 전송 없음) |
 | **404** | 없는 주소 안내 페이지 |
 | **공통 푸터** | 사이트맵, 저작권, 가상 회사 고지, Blender 렌더 출처 |

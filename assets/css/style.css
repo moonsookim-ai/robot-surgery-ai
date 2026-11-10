@@ -434,6 +434,53 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border: 0; bo
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 720px) { .profile-dl { grid-template-columns: 1fr; } }
 
+/* press */
+.press__list { display: grid; gap: 20px; }
+.release-card { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); transition: border-color .3s, transform .4s var(--ease); }
+.release-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.release-card__media { position: relative; min-height: 220px; }
+.release-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: transform 1s var(--ease); }
+.release-card:hover .release-card__media img { transform: scale(1.04); }
+.release-card__body { padding: clamp(22px, 3vw, 36px); display: grid; gap: 12px; align-content: center; }
+.release-card h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.25; text-wrap: balance; }
+.release-card p { color: var(--muted); }
+.release-card__go { color: var(--accent); font-weight: 600; font-size: .92rem; }
+.release-card--compact { grid-template-columns: 1fr; background: transparent; border-radius: 12px; }
+.release-card--compact .release-card__body { padding: 16px 18px; gap: 6px; }
+.release-card--compact h3 { font-size: 1rem; }
+.release-card--compact .release-card__go { font-size: .82rem; }
+.press__media { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 56px; padding: clamp(24px, 4vw, 40px); border: 1px solid var(--line-2); border-radius: 22px; background: radial-gradient(70% 120% at 0% 0%, rgba(63, 182, 255, .08), transparent 60%), var(--bg-3); }
+.press__media-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.page-hero--article h1 { font-size: clamp(2rem, 3.8vw, 3.2rem); max-width: 26ch; }
+.release__grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.release__body { max-width: 720px; font-size: 1.06rem; color: #cbd7e1; }
+.release__body p { margin-bottom: 1.1em; }
+.release__body h2 { font-size: 1.35rem; color: var(--text); margin: 2em 0 .7em; letter-spacing: -.02em; }
+.release__body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.release__dateline b { color: var(--text); }
+.release__quote { margin: 2em 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--accent); }
+.release__quote p { font-size: 1.2rem; line-height: 1.55; color: var(--text); margin-bottom: .6em; }
+.release__quote cite { font-style: normal; font-family: var(--mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.release__steps { padding-left: 1.3em; display: grid; gap: .6em; }
+.release__steps li::marker { color: var(--accent); font-weight: 700; }
+.release__note { font-size: .85rem; color: var(--dim); border-top: 1px solid var(--line); padding-top: 1.2em; margin-top: 2.4em; }
+.release__aside { position: sticky; top: 100px; display: grid; gap: 18px; }
+.release__figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+.release__figure img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.release__figure figcaption { padding: 10px 14px; font-size: .8rem; color: var(--muted); background: var(--bg-2); }
+.release__more { display: grid; gap: 10px; }
+.news__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.news__head .news__title { margin-bottom: 0; }
+.news__head .link-arrow { margin-top: 0; }
+@media (max-width: 1080px) {
+  .release__grid { grid-template-columns: 1fr; }
+  .release__aside { position: static; }
+}
+@media (max-width: 720px) {
+  .release-card { grid-template-columns: 1fr; }
+  .release-card__media { min-height: 180px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }

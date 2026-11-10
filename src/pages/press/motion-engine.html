@@ -1,0 +1,54 @@
+<!--
+title: Inside the Lumenara motion engine
+crumb: Motion engine
+description: Lumenara Surgical details the motion engine behind Lumenara Arc: tremor filtering, motion scaling, remote centre of motion, haptic feedback and assistive AI.
+category: Technology
+date: October 14, 2026
+date_iso: 2026-10-14
+eyebrow: Press release · October 14, 2026
+heading: Lumenara details the motion engine that turns a surgeon's intent into 0.1 mm instrument motion
+lead: Real-time tremor filtering, adjustable motion scaling and a software-locked pivot point are what set Lumenara Arc apart from port-only robotic systems.
+image: media/hero-poster.jpg
+position: 62% 55%
+-->
+    <section class="section release">
+      <div class="container release__grid">
+        <article class="release__body">
+          <p class="release__dateline"><b>BOSTON, October 14, 2026</b> — Lumenara Surgical today published technical details of the motion engine at the core of its Lumenara Arc robotic surgical system. The motion engine processes every hand movement at the surgeon console before it reaches the instrument tip, filtering out physiological tremor and scaling motion down so the instrument follows only what the surgeon intends.</p>
+          <p>Every surgeon's hand carries a small involuntary tremor in the 8 to 12 Hz range. At normal scale it is invisible; when suturing structures smaller than a millimetre, it decides where the needle lands. Lumenara Arc removes that tremor band in real time and lets the surgeon choose how much to scale their movement, from 1:1 to 10:1.</p>
+          <h2>How the motion engine works</h2>
+          <ol class="release__steps">
+            <li><b>Capture.</b> The console samples the surgeon's hand position at high frequency.</li>
+            <li><b>Filter.</b> A low-pass filter removes the 8–12 Hz tremor band and keeps deliberate motion.</li>
+            <li><b>Scale.</b> Motion is scaled down around the instrument's working point, for example 5:1 for suturing or 10:1 for supermicrosurgery.</li>
+            <li><b>Drive.</b> Joint commands are computed for the arm and the MicroWrist while the remote centre of motion stays locked at the incision or port.</li>
+            <li><b>Feel.</b> Measured tip forces are returned to the hand controllers as haptic feedback, down to 0.05 N.</li>
+          </ol>
+          <blockquote class="release__quote">
+            <p>“Precision is not one feature, it is a chain. Tremor filtering, scaling, a stable pivot and force feedback each remove a source of error. Together they give the surgeon 0.1 mm control at the tip without changing how they think about the operation.”</p>
+            <cite>Chief Technology Officer, Lumenara Surgical</cite>
+          </blockquote>
+          <h2>Why it matters</h2>
+          <ul class="ticks ticks--lg">
+            <li><b>Open and minimally invasive surgery on one system.</b> The software-locked pivot works over an open incision as well as at a laparoscopic port, which port-only systems are not designed for.</li>
+            <li><b>Micro-scale work.</b> Adjustable scaling up to 10:1 supports anastomoses of vessels and lymphatics below 0.8 mm.</li>
+            <li><b>Surgeon in control.</b> On-device AI segments tissue planes and vessels as an assistive overlay; it never moves an instrument on its own.</li>
+            <li><b>Safety by design.</b> A live model of all four arms prevents collisions and keeps the bedside team safe.</li>
+          </ul>
+          <p>An interactive demonstration of tremor filtering and motion scaling is available on the <a href="{{root}}technology/">Technology page</a>.</p>
+          <h2>About Lumenara Surgical</h2>
+          <p>Lumenara Surgical designs, builds and supports the Lumenara Arc robotic surgical system and its MicroWrist instruments. Founded in 2016 by surgeons, roboticists and imaging scientists, the company has research, development and training centres in Boston, Munich and Seoul.</p>
+          <h2>Media contact</h2>
+          <p>For media inquiries, please use the <a href="{{demo}}">contact form</a> and select “Other” as your role.</p>
+          <p class="release__note">Lumenara Arc is an investigational device and is not available for sale. This release contains forward-looking statements. Lumenara Surgical is a fictional company created for this concept website; specifications and statements are illustrative.</p>
+        </article>
+        <aside class="release__aside">
+          <figure class="release__figure"><img src="{{root}}assets/media/hero-poster.jpg" alt="Three robotic instruments working in an open abdominal incision, rendered in Blender" width="1920" height="1080" loading="lazy"><figcaption>Lumenara Arc instruments in an open laparotomy (Blender render).</figcaption></figure>
+          <div class="release__more"><span class="mono">More releases</span>
+{{more_releases}}
+          </div>
+          <a class="btn btn--ghost btn--doc btn--block" href="{{root}}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile <span class="btn__tag">PDF</span></a>
+          <a class="link-arrow" href="{{root}}press/">← All press releases</a>
+        </aside>
+      </div>
+    </section>
