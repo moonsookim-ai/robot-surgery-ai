@@ -257,6 +257,22 @@ python3 -m http.server 8000
 
 ---
 
+## 회사소개서 (docx · pptx · pdf)
+
+| 파일 | 용도 |
+|---|---|
+| `assets/docs/Lumenara_Company_Profile.pdf` | 웹사이트에 첨부된 회사소개서 PDF (28장, pptx에서 변환). Company 페이지 `#profile`, 홈 CTA, 모든 페이지 푸터에서 다운로드 |
+| `docs/company-profile/Lumenara_Company_Profile.pptx` | 회사소개서 발표본 (16:9, 28장, 섹션·레이아웃 기반으로 PowerPoint에서 바로 편집 가능) |
+| `docs/company-profile/Lumenara_Company_Profile.docx` | 회사소개서 문서본 (A4, 19쪽) |
+| `docs/company-profile/build_pptx.js`, `build_docx.js` | 생성 스크립트 (pptxgenjs, docx) |
+
+- 표지와 MicroWrist 이미지는 Blender 렌더(`assets/media/`)를 사용합니다.
+- `[To be provided]` 로 표시된 항목(CEO 이름, 규제 현황, 시장 규모, 특허 수, 서비스 응답 시간, 매출 구성, 연락처)은 외부 배포 전에 실제 정보로 채워야 합니다.
+- 성과 지표·2026년 이전 연혁·경쟁 비교는 예시이며 문서 안에 그렇게 표시되어 있습니다.
+- PDF를 다시 만들려면: pptx 수정 → `soffice --headless --convert-to pdf` → `assets/docs/`에 덮어쓰기.
+
+---
+
 ## 9. 디자인 시스템
 
 | 토큰 | 값 | 용도 |

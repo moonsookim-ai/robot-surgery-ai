@@ -120,7 +120,7 @@ def footer(root: str) -> str:
         <p class="footer__tag">Precision beyond the human hand.</p>
       </div>
       <nav aria-label="Footer: Platform"><h4>Platform</h4><a href="{h('platform')}">Arc System</a><a href="{h('platform')}#microwrist">MicroWrist instruments</a><a href="{h('technology')}">Motion engine</a><a href="{h('training')}">Training</a></nav>
-      <nav aria-label="Footer: Company"><h4>Company</h4><a href="{h('company')}">About</a><a href="{h('company')}#news">Newsroom</a><a href="{h('company')}">Careers</a><a href="{h('demo')}">Contact</a></nav>
+      <nav aria-label="Footer: Company"><h4>Company</h4><a href="{h('company')}">About</a><a href="{h('company')}#news">Newsroom</a><a href="{root}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile (PDF)</a><a href="{h('company')}">Careers</a><a href="{h('demo')}">Contact</a></nav>
       <nav aria-label="Footer: Resources"><h4>Resources</h4><a href="{h('outcomes')}">Clinical outcomes</a><a href="{h('specialties')}">Specialties</a><a href="{h('demo')}">Customer support</a><a href="{h('demo')}">Safety information</a></nav>
     </div>
     <div class="container footer__legal">
