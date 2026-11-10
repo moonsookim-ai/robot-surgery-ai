@@ -99,13 +99,17 @@ def header(active: str, root: str) -> str:
       <nav class="nav__links" aria-label="Primary">
         {nav}
       </nav>
-      <a class="btn btn--sm btn--primary nav__cta" href="{href('demo', root)}">Request a demo</a>
+      <div class="nav__actions">
+        <a class="btn btn--sm btn--ghost btn--doc nav__doc" href="{root}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener" aria-label="Company profile, PDF, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg> Company profile <span class="btn__tag">PDF</span></a>
+        <a class="btn btn--sm btn--primary nav__cta" href="{href('demo', root)}">Request a demo</a>
+      </div>
       <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span>
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
       {mob}
+      <a class="btn btn--ghost btn--doc" href="{root}assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener" aria-label="Company profile, PDF, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg> Company profile <span class="btn__tag">PDF</span></a>
       <a class="btn btn--primary" href="{href('demo', root)}">Request a demo</a>
     </div>
   </header>"""
