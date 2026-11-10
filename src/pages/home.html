@@ -1,0 +1,109 @@
+<!--
+title: Lumenara Surgical
+full_title: Lumenara Surgical — Precision Beyond the Human Hand
+description: Lumenara Arc is a robotic surgery platform delivering sub-millimetre, tremor-free control for open and minimally invasive procedures.
+-->
+    <section class="hero" aria-label="Robot-assisted surgery in progress">
+          <div class="hero__media" data-parallax>
+            <video class="hero__video" autoplay muted loop playsinline preload="auto"
+                   poster="{{root}}assets/media/hero-poster.jpg" aria-hidden="true">
+              <source src="{{root}}assets/media/hero.webm" type="video/webm">
+              <source src="{{root}}assets/media/hero.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="hero__shade" aria-hidden="true"></div>
+          <div class="hero__grain" aria-hidden="true"></div>
+
+          <!-- surgeon-console HUD overlay -->
+          <div class="hud" aria-hidden="true">
+            <span class="hud__corner hud__corner--tl"></span>
+            <span class="hud__corner hud__corner--tr"></span>
+            <span class="hud__corner hud__corner--bl"></span>
+            <span class="hud__corner hud__corner--br"></span>
+            <div class="hud__rec"><i></i> LIVE · ARC CONSOLE 03 · <span data-clock>00:00:00</span></div>
+            <div class="hud__reticle" data-reticle>
+              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="44"/><circle cx="60" cy="60" r="3"/><path d="M60 4v20M60 96v20M4 60h20M96 60h20"/></svg>
+              <span class="hud__tag">TIP · NEEDLE DRIVER</span>
+            </div>
+            <ul class="hud__panel">
+              <li><span>Motion scaling</span><b data-hud="scale">5 : 1</b></li>
+              <li><span>Tremor filter</span><b data-hud="tremor">ACTIVE</b></li>
+              <li><span>Tip force</span><b><span data-hud="force">0.42</span> N</b></li>
+              <li><span>Wrist articulation</span><b><span data-hud="wrist">38</span>°</b></li>
+              <li><span>Tip precision</span><b>± <span data-hud="prec">0.08</span> mm</b></li>
+            </ul>
+            <div class="hud__arms">
+              <div><em>ARM 1</em>Needle driver</div>
+              <div><em>ARM 2</em>Cadiere grasper</div>
+              <div><em>ARM 3</em>Maryland bipolar</div>
+            </div>
+          </div>
+
+          <div class="hero__content">
+            <p class="eyebrow"><span class="dot"></span> Lumenara Arc · Robotic Surgical System</p>
+            <h1 class="hero__title">
+              <span class="line"><span>Precision beyond</span></span>
+              <span class="line"><span>the human hand.</span></span>
+            </h1>
+            <p class="hero__lead">
+              Sub-millimetre, tremor-free robotic control for open and minimally invasive surgery —
+              so every suture lands exactly where the surgeon intends.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="{{demo}}">Request a demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn--ghost" href="{{root}}technology/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z" class="fill"/></svg> See the technology</a>
+            </div>
+          </div>
+
+          <div class="hero__foot">
+            <div class="hero__caption">Running anastomosis, robot-assisted open laparotomy · <em>scene modelled &amp; rendered in Blender</em></div>
+            <a class="scroll-cue" href="{{root}}platform/" aria-label="Scroll to platform"><span></span></a>
+          </div>
+        </section>
+
+    <section class="specs" aria-label="Key specifications">
+          <div class="container specs__grid">
+            <div class="spec reveal"><b data-count="0.1" data-decimals="1">0.1</b><span>mm</span><p>Instrument tip motion resolution</p></div>
+            <div class="spec reveal"><b data-count="7">7</b><span>DOF</span><p>Degrees of freedom at the MicroWrist</p></div>
+            <div class="spec reveal"><b data-count="10">10</b><span>: 1</span><p>Adjustable motion scaling</p></div>
+            <div class="spec reveal"><b data-count="4">4</b><span>K 3D</span><p>Stereoscopic fluorescence-ready vision</p></div>
+          </div>
+        </section>
+
+    <section class="section explore" id="explore">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Explore Lumenara</p>
+          <h2>Robotic precision, from console to closure.</h2>
+          <p class="section__lead">Lumenara Arc brings tremor-free, sub-millimetre control to open, laparoscopic and micro-surgical procedures. Start wherever matters most to your team.</p>
+        </header>
+        <div class="explore__grid">
+          <a class="tile tile--wide reveal" href="{{root}}platform/">
+            <img src="{{root}}assets/media/macro.jpg" alt="" loading="lazy" width="1600" height="900">
+            <div class="tile__body"><span class="mono">Platform</span><h3>One system for open, laparoscopic and micro-surgery</h3><p>Arc Console, Patient Cart, Vision Tower and 40+ MicroWrist instruments.</p><span class="tile__go">Explore the platform →</span></div>
+          </a>
+          <a class="tile reveal" href="{{root}}technology/">
+            <div class="tile__body"><span class="mono">Technology</span><h3>Your intent, minus the tremor</h3><p>Try the motion engine: tremor filtering and up to 10:1 motion scaling.</p><span class="tile__go">See the technology →</span></div>
+          </a>
+          <a class="tile reveal" href="{{root}}specialties/">
+            <div class="tile__body"><span class="mono">Specialties</span><h3>Built for demanding procedures</h3><p>General, colorectal, urology, gynecology, thoracic and reconstructive surgery.</p><span class="tile__go">View specialties →</span></div>
+          </a>
+          <a class="tile reveal" href="{{root}}outcomes/">
+            <div class="tile__body"><span class="mono">Outcomes</span><h3>Better for patients, sustainable for hospitals</h3><p>How we measure the value of robotic precision.</p><span class="tile__go">See outcomes →</span></div>
+          </a>
+          <a class="tile reveal" href="{{root}}training/">
+            <div class="tile__body"><span class="mono">Training</span><h3>From first case to mastery</h3><p>Simulation, wet labs, proctoring and performance analytics.</p><span class="tile__go">Explore training →</span></div>
+          </a>
+          <a class="tile reveal" href="{{root}}company/">
+            <div class="tile__body"><span class="mono">Company</span><h3>The steadiest hands in medicine</h3><p>Surgeons, roboticists and imaging scientists in Boston, Munich and Seoul.</p><span class="tile__go">About Lumenara →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-band__inner reveal">
+        <div><p class="eyebrow">Get started</p><h2>See Lumenara Arc in your operating room.</h2></div>
+        <a class="btn btn--primary" href="{{demo}}">Request a demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>

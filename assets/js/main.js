@@ -23,18 +23,6 @@
   $$("a", menu).forEach((a) => a.addEventListener("click", () => setMenu(false)));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) setMenu(false); });
 
-  // active section highlight
-  const links = $$(".nav__links a");
-  const sections = links.map((a) => $(a.getAttribute("href"))).filter(Boolean);
-  const secObs = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (en.isIntersecting) {
-        links.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === "#" + en.target.id));
-      }
-    });
-  }, { rootMargin: "-45% 0px -50% 0px" });
-  sections.forEach((s) => secObs.observe(s));
-
   /* ---------- reveal + counters ---------- */
   const animateCount = (el) => {
     const target = parseFloat(el.dataset.count);
@@ -73,73 +61,76 @@
   });
 
   /* ---------- hero: parallax, video, HUD ---------- */
+  // home page only
   const hero = $(".hero");
-  const media = $("[data-parallax]");
-  const video = $(".hero__video");
-  const reticle = $("[data-reticle]");
-  let mx = 0, my = 0;
+  if (hero) {
+    const media = $("[data-parallax]");
+    const video = $(".hero__video");
+    const reticle = $("[data-reticle]");
+    let mx = 0, my = 0;
 
-  if (video) {
-    if (reduceMotion) { video.removeAttribute("autoplay"); video.pause(); }
-    const vObs = new IntersectionObserver(([en]) => {
-      if (reduceMotion) return;
-      if (en.isIntersecting) video.play().catch(() => {}); else video.pause();
-    });
-    vObs.observe(hero);
-  }
+    if (video) {
+      if (reduceMotion) { video.removeAttribute("autoplay"); video.pause(); }
+      const vObs = new IntersectionObserver(([en]) => {
+        if (reduceMotion) return;
+        if (en.isIntersecting) video.play().catch(() => {}); else video.pause();
+      });
+      vObs.observe(hero);
+    }
 
-  if (!reduceMotion) {
-    hero.addEventListener("pointermove", (e) => {
-      const r = hero.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - 0.5;
-      my = (e.clientY - r.top) / r.height - 0.5;
-    });
-    hero.addEventListener("pointerleave", () => { mx = 0; my = 0; });
-  }
-
-  // Map a point in the rendered video frame (normalised 0..1) to hero pixels, honouring object-fit: cover.
-  const VIDEO_W = 1280, VIDEO_H = 720, OBJ_X = 0.6, OBJ_Y = 0.5;
-  const NEEDLE_TIP = { x: 0.58, y: 0.49 }; // needle-driver tip in the Blender render
-  const framePoint = (nx, ny) => {
-    const r = media.getBoundingClientRect();
-    const hr = hero.getBoundingClientRect();
-    const s = Math.max(r.width / VIDEO_W, r.height / VIDEO_H);
-    const w = VIDEO_W * s, h = VIDEO_H * s;
-    const ox = (r.width - w) * OBJ_X, oy = (r.height - h) * OBJ_Y;
-    return { x: r.left - hr.left + ox + nx * w, y: r.top - hr.top + oy + ny * h };
-  };
-
-  const hud = {
-    force: $('[data-hud="force"]'), wrist: $('[data-hud="wrist"]'), prec: $('[data-hud="prec"]'),
-    clock: $("[data-clock]"),
-  };
-  const start = Date.now();
-  let lastHud = 0;
-  const heroLoop = (now) => {
-    const sy = Math.min(window.scrollY, window.innerHeight);
     if (!reduceMotion) {
-      media.style.transform = `translate3d(${mx * -18}px, ${my * -12 + sy * 0.25}px, 0) scale(${1 + sy / window.innerHeight * 0.06})`;
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        mx = (e.clientX - r.left) / r.width - 0.5;
+        my = (e.clientY - r.top) / r.height - 0.5;
+      });
+      hero.addEventListener("pointerleave", () => { mx = 0; my = 0; });
     }
-    // reticle follows the needle driver; its micro-motion matches the 4 s render loop
-    if (reticle && video) {
-      const t = ((video.currentTime || 0) / 4) * Math.PI * 2;
-      const p = framePoint(NEEDLE_TIP.x + 0.012 * Math.sin(t), NEEDLE_TIP.y + 0.01 * Math.cos(t));
-      reticle.style.transform = `translate3d(${p.x}px, ${p.y}px, 0)`;
-    }
-    if (now - lastHud > 180) {
-      lastHud = now;
-      const t = now / 1000;
-      if (hud.force) hud.force.textContent = (0.42 + 0.06 * Math.sin(t * 1.7) + 0.02 * Math.sin(t * 5.3)).toFixed(2);
-      if (hud.wrist) hud.wrist.textContent = Math.round(38 + 14 * Math.sin(t * 1.57));
-      if (hud.prec) hud.prec.textContent = (0.07 + 0.015 * Math.abs(Math.sin(t * 2.1))).toFixed(2);
-      if (hud.clock) {
-        const s = Math.floor((Date.now() - start) / 1000) + 2843;
-        hud.clock.textContent = [s / 3600, (s / 60) % 60, s % 60].map((v) => String(Math.floor(v)).padStart(2, "0")).join(":");
+
+    // Map a point in the rendered video frame (normalised 0..1) to hero pixels, honouring object-fit: cover.
+    const VIDEO_W = 1280, VIDEO_H = 720, OBJ_X = 0.6, OBJ_Y = 0.5;
+    const NEEDLE_TIP = { x: 0.58, y: 0.49 }; // needle-driver tip in the Blender render
+    const framePoint = (nx, ny) => {
+      const r = media.getBoundingClientRect();
+      const hr = hero.getBoundingClientRect();
+      const s = Math.max(r.width / VIDEO_W, r.height / VIDEO_H);
+      const w = VIDEO_W * s, h = VIDEO_H * s;
+      const ox = (r.width - w) * OBJ_X, oy = (r.height - h) * OBJ_Y;
+      return { x: r.left - hr.left + ox + nx * w, y: r.top - hr.top + oy + ny * h };
+    };
+
+    const hud = {
+      force: $('[data-hud="force"]'), wrist: $('[data-hud="wrist"]'), prec: $('[data-hud="prec"]'),
+      clock: $("[data-clock]"),
+    };
+    const start = Date.now();
+    let lastHud = 0;
+    const heroLoop = (now) => {
+      const sy = Math.min(window.scrollY, window.innerHeight);
+      if (!reduceMotion) {
+        media.style.transform = `translate3d(${mx * -18}px, ${my * -12 + sy * 0.25}px, 0) scale(${1 + sy / window.innerHeight * 0.06})`;
       }
-    }
+      // reticle follows the needle driver; its micro-motion matches the 4 s render loop
+      if (reticle && video) {
+        const t = ((video.currentTime || 0) / 4) * Math.PI * 2;
+        const p = framePoint(NEEDLE_TIP.x + 0.012 * Math.sin(t), NEEDLE_TIP.y + 0.01 * Math.cos(t));
+        reticle.style.transform = `translate3d(${p.x}px, ${p.y}px, 0)`;
+      }
+      if (now - lastHud > 180) {
+        lastHud = now;
+        const t = now / 1000;
+        if (hud.force) hud.force.textContent = (0.42 + 0.06 * Math.sin(t * 1.7) + 0.02 * Math.sin(t * 5.3)).toFixed(2);
+        if (hud.wrist) hud.wrist.textContent = Math.round(38 + 14 * Math.sin(t * 1.57));
+        if (hud.prec) hud.prec.textContent = (0.07 + 0.015 * Math.abs(Math.sin(t * 2.1))).toFixed(2);
+        if (hud.clock) {
+          const s = Math.floor((Date.now() - start) / 1000) + 2843;
+          hud.clock.textContent = [s / 3600, (s / 60) % 60, s % 60].map((v) => String(Math.floor(v)).padStart(2, "0")).join(":");
+        }
+      }
+      requestAnimationFrame(heroLoop);
+    };
     requestAnimationFrame(heroLoop);
-  };
-  requestAnimationFrame(heroLoop);
+  }
 
   /* ---------- tremor / motion-scaling lab ---------- */
   const canvas = $("#tremor-canvas");
