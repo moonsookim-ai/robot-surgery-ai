@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumenara Surgical — Precision Beyond the Human Hand</title>
+  <meta name="description" content="Lumenara Arc is a robotic surgery platform delivering sub-millimetre, tremor-free control for open and minimally invasive procedures.">
+  <meta name="theme-color" content="#05090d">
+  <meta property="og:title" content="Lumenara Surgical — Precision Beyond the Human Hand">
+  <meta property="og:description" content="Robotic micro-precision for open and minimally invasive surgery.">
+  <meta property="og:image" content="assets/media/hero-poster.jpg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/media/hero-poster.jpg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Lumenara Surgical home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+          <path d="M6 21c3-9 7-13 10-13s7 4 10 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="16" cy="8" r="2.4" fill="var(--accent)"/>
+        </svg>
+        <span>Lumenara<small>Surgical</small></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#technology">Technology</a>
+        <a href="#specialties">Specialties</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#training">Training</a>
+        <a href="#company">Company</a>
+      </nav>
+      <a class="btn btn--sm btn--primary nav__cta" href="#demo">Request a demo</a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="#platform">Platform</a>
+      <a href="#technology">Technology</a>
+      <a href="#specialties">Specialties</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#training">Training</a>
+      <a href="#company">Company</a>
+      <a class="btn btn--primary" href="#demo">Request a demo</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Robot-assisted surgery in progress">
+      <div class="hero__media" data-parallax>
+        <video class="hero__video" autoplay muted loop playsinline preload="auto"
+               poster="assets/media/hero-poster.jpg" aria-hidden="true">
+          <source src="assets/media/hero.webm" type="video/webm">
+          <source src="assets/media/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <!-- surgeon-console HUD overlay -->
+      <div class="hud" aria-hidden="true">
+        <span class="hud__corner hud__corner--tl"></span>
+        <span class="hud__corner hud__corner--tr"></span>
+        <span class="hud__corner hud__corner--bl"></span>
+        <span class="hud__corner hud__corner--br"></span>
+        <div class="hud__rec"><i></i> LIVE · ARC CONSOLE 03 · <span data-clock>00:00:00</span></div>
+        <div class="hud__reticle" data-reticle>
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="44"/><circle cx="60" cy="60" r="3"/><path d="M60 4v20M60 96v20M4 60h20M96 60h20"/></svg>
+          <span class="hud__tag">TIP · NEEDLE DRIVER</span>
+        </div>
+        <ul class="hud__panel">
+          <li><span>Motion scaling</span><b data-hud="scale">5 : 1</b></li>
+          <li><span>Tremor filter</span><b data-hud="tremor">ACTIVE</b></li>
+          <li><span>Tip force</span><b><span data-hud="force">0.42</span> N</b></li>
+          <li><span>Wrist articulation</span><b><span data-hud="wrist">38</span>°</b></li>
+          <li><span>Tip precision</span><b>± <span data-hud="prec">0.08</span> mm</b></li>
+        </ul>
+        <div class="hud__arms">
+          <div><em>ARM 1</em>Needle driver</div>
+          <div><em>ARM 2</em>Cadiere grasper</div>
+          <div><em>ARM 3</em>Maryland bipolar</div>
+        </div>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow"><span class="dot"></span> Lumenara Arc · Robotic Surgical System</p>
+        <h1 class="hero__title">
+          <span class="line"><span>Precision beyond</span></span>
+          <span class="line"><span>the human hand.</span></span>
+        </h1>
+        <p class="hero__lead">
+          Sub-millimetre, tremor-free robotic control for open and minimally invasive surgery —
+          so every suture lands exactly where the surgeon intends.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#demo">Request a demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="#technology"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z" class="fill"/></svg> See the technology</a>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <div class="hero__caption">Running anastomosis, robot-assisted open laparotomy · <em>scene modelled &amp; rendered in Blender</em></div>
+        <a class="scroll-cue" href="#platform" aria-label="Scroll to platform"><span></span></a>
+      </div>
+    </section>
+
+    <!-- ============ SPEC STRIP ============ -->
+    <section class="specs" aria-label="Key specifications">
+      <div class="container specs__grid">
+        <div class="spec reveal"><b data-count="0.1" data-decimals="1">0.1</b><span>mm</span><p>Instrument tip motion resolution</p></div>
+        <div class="spec reveal"><b data-count="7">7</b><span>DOF</span><p>Degrees of freedom at the MicroWrist</p></div>
+        <div class="spec reveal"><b data-count="10">10</b><span>: 1</span><p>Adjustable motion scaling</p></div>
+        <div class="spec reveal"><b data-count="4">4</b><span>K 3D</span><p>Stereoscopic fluorescence-ready vision</p></div>
+      </div>
+    </section>
+
+    <!-- ============ PLATFORM ============ -->
+    <section class="section platform" id="platform">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">The platform</p>
+          <h2>One system. Open, laparoscopic and micro&#8209;surgical.</h2>
+          <p class="section__lead">Lumenara Arc combines an immersive surgeon console, a four-arm patient cart and an intelligent vision tower. It docks over an open incision as easily as it docks to ports — and switches between the two in minutes.</p>
+        </header>
+
+        <div class="platform__grid">
+          <article class="card card--feature reveal">
+            <div class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="20" rx="3"/><path d="M14 38h20M24 30v8M16 18h6M26 18h6"/></svg></div>
+            <h3>Arc Console</h3>
+            <p>Ergonomic, open-architecture console with 4K stereoscopic viewer, haptic hand controllers and eye-tracked camera control. Surgeons stay seated, focused and in full view of the team.</p>
+            <ul class="ticks"><li>Haptic force feedback to 0.05 N</li><li>Adjustable 1:1 – 10:1 motion scaling</li><li>Integrated tele-mentoring</li></ul>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 42h28M24 42V26M24 26l-10-10 6-8M24 26l10-10-6-8"/><circle cx="24" cy="26" r="3"/></svg></div>
+            <h3>Arc Patient Cart</h3>
+            <p>Four slim, collision-aware arms that pivot around a software-defined remote centre of motion — protecting the incision or port site while the instrument tip moves freely inside.</p>
+            <ul class="ticks"><li>Open &amp; MIS docking modes</li><li>Active collision avoidance</li><li>Under-5-minute setup</li></ul>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="6" width="24" height="36" rx="3"/><path d="M18 14h12M18 20h12M18 26h7"/><circle cx="30" cy="34" r="2"/></svg></div>
+            <h3>Arc Vision Tower</h3>
+            <p>Real-time 4K 3D imaging with near-infrared fluorescence, energy generator integration and on-device AI that tracks tissue, vessels and instruments frame by frame.</p>
+            <ul class="ticks"><li>ICG fluorescence perfusion view</li><li>AI tissue &amp; vessel tracking</li><li>Secure case recording</li></ul>
+          </article>
+        </div>
+
+        <div class="split reveal" id="microwrist">
+          <figure class="split__media">
+            <img src="assets/media/macro.jpg" alt="Close-up render of an articulated robotic needle driver passing a curved needle through bowel tissue" loading="lazy" width="1600" height="900">
+            <figcaption><span class="mono">BLENDER · CYCLES</span> MicroWrist needle driver placing a running suture</figcaption>
+          </figure>
+          <div class="split__copy">
+            <p class="eyebrow">MicroWrist instruments</p>
+            <h3>A wrist that turns where a hand can't.</h3>
+            <p>Cable-driven, 8 mm MicroWrist instruments articulate beyond the range of the human wrist, giving surgeons true dexterity deep inside the body. Needle drivers, graspers, scissors and advanced bipolar energy — more than 40 instruments, each with chip-verified usage tracking.</p>
+            <dl class="kv">
+              <div><dt>Wrist articulation</dt><dd>± 90° pitch · ± 90° yaw</dd></div>
+              <div><dt>Roll</dt><dd>540° continuous</dd></div>
+              <div><dt>Shaft diameter</dt><dd>8 mm / 5 mm</dd></div>
+              <div><dt>Instrument library</dt><dd>40+ wristed tools</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECHNOLOGY ============ -->
+    <section class="section technology" id="technology">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Technology</p>
+          <h2>Your intent, minus the tremor.</h2>
+          <p class="section__lead">Every hand movement at the console passes through Lumenara's real-time motion engine. Physiological tremor is filtered out, motion is scaled down, and the instrument tip follows only what the surgeon means to do.</p>
+        </header>
+
+        <div class="lab reveal">
+          <div class="lab__canvas">
+            <canvas id="tremor-canvas" aria-label="Interactive demonstration: surgeon hand path compared with filtered robotic instrument path" role="img"></canvas>
+            <div class="lab__legend">
+              <span><i class="sw sw--hand"></i> Surgeon hand input</span>
+              <span><i class="sw sw--robot"></i> Instrument tip output</span>
+            </div>
+          </div>
+          <div class="lab__controls">
+            <h3>Try the motion engine</h3>
+            <p>Move your cursor (or finger) over the panel. Adjust scaling and filtering to see how a natural hand path becomes a steady, sub-millimetre instrument path.</p>
+            <label class="range">
+              <span>Motion scaling <output id="scale-out">5 : 1</output></span>
+              <input type="range" id="scale" min="1" max="10" step="1" value="5">
+            </label>
+            <label class="range">
+              <span>Tremor filtering <output id="filter-out">High</output></span>
+              <input type="range" id="filter" min="0" max="3" step="1" value="2">
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="tremor-sim" checked>
+              <span>Simulate 8–12 Hz physiological tremor</span>
+            </label>
+            <div class="lab__readout">
+              <div><small>Hand jitter</small><b id="jit-in">—</b></div>
+              <div><small>Tip jitter</small><b id="jit-out">—</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <span class="feature__num">01</span>
+            <h3>Remote centre of motion</h3>
+            <p>Arms pivot around a software-locked point at the incision or port, so the body wall never takes the strain of instrument movement.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">02</span>
+            <h3>Haptic force feedback</h3>
+            <p>Strain sensors at the wrist return tissue and suture tension to the surgeon's hands — knots stay secure, tissue stays intact.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">03</span>
+            <h3>AI scene understanding</h3>
+            <p>On-device models segment tissue planes, vessels and instruments in real time, highlighting critical structures before they're touched.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">04</span>
+            <h3>Fluorescence imaging</h3>
+            <p>Near-infrared ICG overlays reveal perfusion and anatomy in a single click — confirm blood supply before you close.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">05</span>
+            <h3>Collision-aware arms</h3>
+            <p>A live kinematic model of all four arms prevents clashes and keeps assistants safe at the bedside.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">06</span>
+            <h3>Connected insights</h3>
+            <p>Secure case analytics turn every procedure into a learning opportunity — for surgeons, teams and hospital leadership.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPECIALTIES ============ -->
+    <section class="section specialties" id="specialties">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Specialties</p>
+          <h2>Built for the procedures that demand the most.</h2>
+        </header>
+        <div class="tabs reveal">
+          <div class="tabs__list" role="tablist" aria-label="Surgical specialties">
+            <button role="tab" aria-selected="true" aria-controls="tab-general" id="t-general">General &amp; Colorectal</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-uro" id="t-uro" tabindex="-1">Urology</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-gyn" id="t-gyn" tabindex="-1">Gynecology</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-thor" id="t-thor" tabindex="-1">Thoracic</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-micro" id="t-micro" tabindex="-1">Micro &amp; Reconstructive</button>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="tab-general" aria-labelledby="t-general">
+            <div><h3>General &amp; Colorectal</h3><p>From hernia repair to low anterior resection, wristed instruments and stable traction make intracorporeal anastomoses and deep pelvic dissection more reproducible.</p></div>
+            <ul class="chips"><li>Colectomy</li><li>Low anterior resection</li><li>Ventral &amp; inguinal hernia</li><li>Cholecystectomy</li><li>Bowel anastomosis</li></ul>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="tab-uro" aria-labelledby="t-uro" hidden>
+            <div><h3>Urology</h3><p>Precise nerve-sparing dissection and watertight urethrovesical anastomosis in the confined pelvis, supported by fluorescence-guided anatomy.</p></div>
+            <ul class="chips"><li>Radical prostatectomy</li><li>Partial nephrectomy</li><li>Pyeloplasty</li><li>Cystectomy</li></ul>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="tab-gyn" aria-labelledby="t-gyn" hidden>
+            <div><h3>Gynecology</h3><p>Enhanced visualization and articulation for complex benign and oncologic procedures, including deep endometriosis excision.</p></div>
+            <ul class="chips"><li>Hysterectomy</li><li>Myomectomy</li><li>Sacrocolpopexy</li><li>Endometriosis resection</li></ul>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="tab-thor" aria-labelledby="t-thor" hidden>
+            <div><h3>Thoracic</h3><p>Stable, articulated access around the hilum for anatomical lung resections and mediastinal procedures through small incisions.</p></div>
+            <ul class="chips"><li>Lobectomy</li><li>Segmentectomy</li><li>Thymectomy</li><li>Esophagectomy</li></ul>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="tab-micro" aria-labelledby="t-micro" hidden>
+            <div><h3>Micro &amp; Reconstructive</h3><p>Up to 10:1 motion scaling enables supermicrosurgical anastomoses of vessels and lymphatics below 0.8 mm — the frontier of robot-assisted surgery.</p></div>
+            <ul class="chips"><li>Lymphovenous anastomosis</li><li>Free flap reconstruction</li><li>Nerve repair</li><li>Vascular microsurgery</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OUTCOMES ============ -->
+    <section class="section outcomes" id="outcomes">
+      <div class="container outcomes__grid">
+        <header class="section__head reveal">
+          <p class="eyebrow">Outcomes</p>
+          <h2>Better for patients. Sustainable for hospitals.</h2>
+          <p class="section__lead">Robotic precision is only meaningful when it shows up in recovery. Lumenara works with clinical partners to measure what matters — from length of stay to return to normal life.</p>
+          <a class="link-arrow" href="#demo">Talk to our clinical team →</a>
+        </header>
+        <div class="metrics">
+          <div class="metric reveal"><b><span data-count="1.2" data-decimals="1">1.2</span><small>days</small></b><p>Shorter average hospital stay<sup>*</sup></p></div>
+          <div class="metric reveal"><b><span data-count="34">34</span><small>%</small></b><p>Fewer conversions to open surgery<sup>*</sup></p></div>
+          <div class="metric reveal"><b><span data-count="28">28</span><small>%</small></b><p>Lower surgeon-reported fatigue<sup>*</sup></p></div>
+          <div class="metric reveal"><b><span data-count="96">96</span><small>%</small></b><p>System uptime across installed base<sup>*</sup></p></div>
+        </div>
+        <p class="footnote">* Illustrative figures for this concept website. Not clinical data.</p>
+      </div>
+    </section>
+
+    <!-- ============ TRAINING ============ -->
+    <section class="section training" id="training">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Training &amp; ecosystem</p>
+          <h2>From first case to fellowship-level mastery.</h2>
+        </header>
+        <div class="steps">
+          <article class="step reveal"><span class="step__n">1</span><h3>Simulate</h3><p>A physics-based VR simulator with 60+ validated exercises and objective skill scoring.</p></article>
+          <article class="step reveal"><span class="step__n">2</span><h3>Practice</h3><p>Hands-on dry and wet labs at Lumenara Training Centers in Boston, Munich and Seoul.</p></article>
+          <article class="step reveal"><span class="step__n">3</span><h3>Proctor</h3><p>Expert proctors join your first cases — in person or via low-latency tele-mentoring.</p></article>
+          <article class="step reveal"><span class="step__n">4</span><h3>Improve</h3><p>Personal performance dashboards benchmark efficiency, economy of motion and outcomes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMPANY ============ -->
+    <section class="section company" id="company">
+      <div class="container company__grid">
+        <div class="reveal">
+          <p class="eyebrow">Company</p>
+          <h2>Engineering the steadiest hands in medicine.</h2>
+          <p class="section__lead">Lumenara Surgical was founded by surgeons, roboticists and imaging scientists with one conviction: technology should extend a surgeon's skill, not replace their judgement. Our teams in Boston, Munich and Seoul design every part of the Arc system — from cable-driven wrists to the motion engine that drives them.</p>
+        </div>
+        <div class="company__facts reveal">
+          <div><b>2016</b><span>Founded</span></div>
+          <div><b>3</b><span>R&amp;D centres</span></div>
+          <div><b>900+</b><span>Engineers &amp; clinicians</span></div>
+          <div><b>40+</b><span>Wristed instruments</span></div>
+        </div>
+      </div>
+      <div class="container news">
+        <h3 class="news__title reveal">Latest</h3>
+        <div class="news__grid">
+          <a class="news__card reveal" href="#demo"><span class="mono">Product</span><h4>Arc 2 brings 10:1 motion scaling to supermicrosurgery</h4><p>New MicroWrist 5 mm instruments open robot-assisted lymphatic and vascular reconstruction.</p></a>
+          <a class="news__card reveal" href="#demo"><span class="mono">Research</span><h4>How AI tissue tracking keeps critical structures in view</h4><p>Inside the on-device models that segment anatomy at 60 frames per second.</p></a>
+          <a class="news__card reveal" href="#demo"><span class="mono">Education</span><h4>Seoul Training Center opens for Asia-Pacific surgical teams</h4><p>Simulation, wet labs and proctoring programs now available across the region.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEMO / CONTACT ============ -->
+    <section class="section demo" id="demo">
+      <div class="container demo__grid">
+        <div class="reveal">
+          <p class="eyebrow">Get started</p>
+          <h2>See Lumenara Arc in your operating room.</h2>
+          <p class="section__lead">Book a hands-on demonstration with our clinical specialists. We'll tailor the session to your specialties, case mix and program goals.</p>
+          <ul class="ticks ticks--lg">
+            <li>Console test-drive with your surgeons</li>
+            <li>Program &amp; ROI planning for your hospital</li>
+            <li>Training pathway for your whole team</li>
+          </ul>
+        </div>
+        <form class="form reveal" id="demo-form" novalidate>
+          <div class="form__row">
+            <label>First name<input name="first" autocomplete="given-name" required></label>
+            <label>Last name<input name="last" autocomplete="family-name" required></label>
+          </div>
+          <label>Work email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Hospital / institution<input name="org" autocomplete="organization" required></label>
+          <div class="form__row">
+            <label>Role
+              <select name="role" required>
+                <option value="">Select…</option>
+                <option>Surgeon</option><option>OR / Perioperative lead</option><option>Hospital executive</option><option>Procurement</option><option>Other</option>
+              </select>
+            </label>
+            <label>Specialty
+              <select name="specialty">
+                <option value="">Select…</option>
+                <option>General &amp; Colorectal</option><option>Urology</option><option>Gynecology</option><option>Thoracic</option><option>Micro &amp; Reconstructive</option>
+              </select>
+            </label>
+          </div>
+          <label>Message <span class="opt">(optional)</span><textarea name="msg" rows="3"></textarea></label>
+          <button class="btn btn--primary btn--block" type="submit">Request a demo</button>
+          <p class="form__note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand" href="#top"><svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/><path d="M6 21c3-9 7-13 10-13s7 4 10 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="8" r="2.4" fill="var(--accent)"/></svg><span>Lumenara<small>Surgical</small></span></a>
+        <p class="footer__tag">Precision beyond the human hand.</p>
+      </div>
+      <nav aria-label="Footer: Platform"><h4>Platform</h4><a href="#platform">Arc System</a><a href="#microwrist">MicroWrist instruments</a><a href="#technology">Motion engine</a><a href="#training">Training</a></nav>
+      <nav aria-label="Footer: Company"><h4>Company</h4><a href="#company">About</a><a href="#company">Newsroom</a><a href="#company">Careers</a><a href="#demo">Contact</a></nav>
+      <nav aria-label="Footer: Resources"><h4>Resources</h4><a href="#outcomes">Clinical outcomes</a><a href="#specialties">Specialties</a><a href="#demo">Customer support</a><a href="#demo">Safety information</a></nav>
+    </div>
+    <div class="container footer__legal">
+      <p>© <span data-year>2026</span> Lumenara Surgical. Concept website — Lumenara is a fictional company; product names, specifications and figures are illustrative only.</p>
+      <p>Hero and instrument imagery procedurally modelled and rendered in <a href="https://www.blender.org/" rel="noopener" target="_blank">Blender</a> (Cycles).</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
