@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inside the Lumenara motion engine | Lumenara Surgical</title>
+  <meta name="description" content="Lumenara Surgical details the motion engine behind Lumenara Arc: tremor filtering, motion scaling, remote centre of motion, haptic feedback and assistive AI.">
+  <meta name="theme-color" content="#05090d">
+  <meta property="og:site_name" content="Lumenara Surgical">
+  <meta property="og:title" content="Inside the Lumenara motion engine | Lumenara Surgical">
+  <meta property="og:description" content="Lumenara Surgical details the motion engine behind Lumenara Arc: tremor filtering, motion scaling, remote centre of motion, haptic feedback and assistive AI.">
+  <meta property="og:image" content="../../assets/media/hero-poster.jpg">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="page page--press/motion-engine">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="brand" href="../../" aria-label="Lumenara Surgical home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/><path d="M6 21c3-9 7-13 10-13s7 4 10 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="8" r="2.4" fill="var(--accent)"/></svg>
+        <span>Lumenara<small>Surgical</small></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../../platform/">Platform</a>
+        <a href="../../technology/">Technology</a>
+        <a href="../../specialties/">Specialties</a>
+        <a href="../../outcomes/">Outcomes</a>
+        <a href="../../training/">Training</a>
+        <a href="../../company/">Company</a>
+        <a href="../../press/" aria-current="page" class="is-active">Press</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--sm btn--ghost btn--doc nav__doc" href="../../assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener" aria-label="Company profile, PDF, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg> Company profile <span class="btn__tag">PDF</span></a>
+        <a class="btn btn--sm btn--primary nav__cta" href="../../demo/">Request a demo</a>
+      </div>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="../../platform/">Platform</a>
+      <a href="../../technology/">Technology</a>
+      <a href="../../specialties/">Specialties</a>
+      <a href="../../outcomes/">Outcomes</a>
+      <a href="../../training/">Training</a>
+      <a href="../../company/">Company</a>
+      <a href="../../press/" aria-current="page" class="is-active">Press</a>
+      <a class="btn btn--ghost btn--doc" href="../../assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener" aria-label="Company profile, PDF, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg> Company profile <span class="btn__tag">PDF</span></a>
+      <a class="btn btn--primary" href="../../demo/">Request a demo</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero page-hero--article">
+      <div class="page-hero__media" aria-hidden="true"><img src="../../assets/media/hero-poster.jpg" alt="" style="object-position:62% 55%" width="1920" height="1080"></div>
+      <div class="container page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../press/">Press</a><span aria-hidden="true">/</span><span aria-current="page">Motion engine</span></nav>
+        <p class="eyebrow">Press release · October 14, 2026</p>
+        <h1>Lumenara details the motion engine that turns a surgeon's intent into 0.1 mm instrument motion</h1>
+        <p class="page-hero__lead">Real-time tremor filtering, adjustable motion scaling and a software-locked pivot point are what set Lumenara Arc apart from port-only robotic systems.</p>
+      </div>
+    </section>
+<section class="section release">
+      <div class="container release__grid">
+        <article class="release__body">
+          <p class="release__dateline"><b>BOSTON, October 14, 2026</b> — Lumenara Surgical today published technical details of the motion engine at the core of its Lumenara Arc robotic surgical system. The motion engine processes every hand movement at the surgeon console before it reaches the instrument tip, filtering out physiological tremor and scaling motion down so the instrument follows only what the surgeon intends.</p>
+          <p>Every surgeon's hand carries a small involuntary tremor in the 8 to 12 Hz range. At normal scale it is invisible; when suturing structures smaller than a millimetre, it decides where the needle lands. Lumenara Arc removes that tremor band in real time and lets the surgeon choose how much to scale their movement, from 1:1 to 10:1.</p>
+          <h2>How the motion engine works</h2>
+          <ol class="release__steps">
+            <li><b>Capture.</b> The console samples the surgeon's hand position at high frequency.</li>
+            <li><b>Filter.</b> A low-pass filter removes the 8–12 Hz tremor band and keeps deliberate motion.</li>
+            <li><b>Scale.</b> Motion is scaled down around the instrument's working point, for example 5:1 for suturing or 10:1 for supermicrosurgery.</li>
+            <li><b>Drive.</b> Joint commands are computed for the arm and the MicroWrist while the remote centre of motion stays locked at the incision or port.</li>
+            <li><b>Feel.</b> Measured tip forces are returned to the hand controllers as haptic feedback, down to 0.05 N.</li>
+          </ol>
+          <blockquote class="release__quote">
+            <p>“Precision is not one feature, it is a chain. Tremor filtering, scaling, a stable pivot and force feedback each remove a source of error. Together they give the surgeon 0.1 mm control at the tip without changing how they think about the operation.”</p>
+            <cite>Chief Technology Officer, Lumenara Surgical</cite>
+          </blockquote>
+          <h2>Why it matters</h2>
+          <ul class="ticks ticks--lg">
+            <li><b>Open and minimally invasive surgery on one system.</b> The software-locked pivot works over an open incision as well as at a laparoscopic port, which port-only systems are not designed for.</li>
+            <li><b>Micro-scale work.</b> Adjustable scaling up to 10:1 supports anastomoses of vessels and lymphatics below 0.8 mm.</li>
+            <li><b>Surgeon in control.</b> On-device AI segments tissue planes and vessels as an assistive overlay; it never moves an instrument on its own.</li>
+            <li><b>Safety by design.</b> A live model of all four arms prevents collisions and keeps the bedside team safe.</li>
+          </ul>
+          <p>An interactive demonstration of tremor filtering and motion scaling is available on the <a href="../../technology/">Technology page</a>.</p>
+          <h2>About Lumenara Surgical</h2>
+          <p>Lumenara Surgical designs, builds and supports the Lumenara Arc robotic surgical system and its MicroWrist instruments. Founded in 2016 by surgeons, roboticists and imaging scientists, the company has research, development and training centres in Boston, Munich and Seoul.</p>
+          <h2>Media contact</h2>
+          <p>For media inquiries, please use the <a href="../../demo/">contact form</a> and select “Other” as your role.</p>
+          <p class="release__note">Lumenara Arc is an investigational device and is not available for sale. This release contains forward-looking statements. Lumenara Surgical is a fictional company created for this concept website; specifications and statements are illustrative.</p>
+        </article>
+        <aside class="release__aside">
+          <figure class="release__figure"><img src="../../assets/media/hero-poster.jpg" alt="Three robotic instruments working in an open abdominal incision, rendered in Blender" width="1920" height="1080" loading="lazy"><figcaption>Lumenara Arc instruments in an open laparotomy (Blender render).</figcaption></figure>
+          <div class="release__more"><span class="mono">More releases</span>
+<a class="release-card reveal release-card--compact" href="../../press/arc-2-launch/">
+          <div class="release-card__body"><span class="mono">Product · November 3, 2026</span>
+          <h3>Lumenara Surgical introduces Arc&nbsp;2, one robotic platform for open, laparoscopic and micro-surgery</h3><span class="release-card__go">Read the release →</span></div>
+        </a>
+<a class="release-card reveal release-card--compact" href="../../press/seoul-training-center/">
+          <div class="release-card__body"><span class="mono">Company · September 15, 2026</span>
+          <h3>Lumenara opens Seoul Training Center, completing a three-continent network for robotic surgery education</h3><span class="release-card__go">Read the release →</span></div>
+        </a>
+          </div>
+          <a class="btn btn--ghost btn--doc btn--block" href="../../assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile <span class="btn__tag">PDF</span></a>
+          <a class="link-arrow" href="../../press/">← All press releases</a>
+        </aside>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand" href="../../"><svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/><path d="M6 21c3-9 7-13 10-13s7 4 10 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="8" r="2.4" fill="var(--accent)"/></svg><span>Lumenara<small>Surgical</small></span></a>
+        <p class="footer__tag">Precision beyond the human hand.</p>
+      </div>
+      <nav aria-label="Footer: Platform"><h4>Platform</h4><a href="../../platform/">Arc System</a><a href="../../platform/#microwrist">MicroWrist instruments</a><a href="../../technology/">Motion engine</a><a href="../../training/">Training</a></nav>
+      <nav aria-label="Footer: Company"><h4>Company</h4><a href="../../company/">About</a><a href="../../press/">Press releases</a><a href="../../assets/docs/Lumenara_Company_Profile.pdf" target="_blank" rel="noopener">Company profile (PDF)</a><a href="../../company/">Careers</a><a href="../../demo/">Contact</a></nav>
+      <nav aria-label="Footer: Resources"><h4>Resources</h4><a href="../../outcomes/">Clinical outcomes</a><a href="../../specialties/">Specialties</a><a href="../../demo/">Customer support</a><a href="../../demo/">Safety information</a></nav>
+    </div>
+    <div class="container footer__legal">
+      <p>&copy; <span data-year>2026</span> Lumenara Surgical. Concept website &mdash; Lumenara is a fictional company; product names, specifications and figures are illustrative only.</p>
+      <p>Hero and instrument imagery procedurally modelled and rendered in <a href="https://www.blender.org/" rel="noopener" target="_blank">Blender</a> (Cycles).</p>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js" defer></script>
+</body>
+</html>
