@@ -307,7 +307,7 @@ python3 -m http.server 8000
 - [x] 영문 랜딩페이지 전체 섹션 및 인터랙션
 - [x] Blender 절차 생성 장면 + 히어로 포스터 / 접사 렌더
 - [x] 데스크톱(1440×900) · 모바일(390×844) 스크린샷 검증
-- [ ] 히어로 4초 루프 영상(`hero.mp4`, `hero.webm`) — 렌더 진행 중. 완료되면 `assets/media/`에 추가. 그 전까지는 히어로에 포스터 이미지가 표시됨
+- [x] 히어로 4초 루프 영상(`hero.mp4` 545KB, `hero.webm` 314KB): Blender Cycles 1280×720, 96프레임/24fps, 끊김 없는 반복 재생
 - [ ] PR을 `main`에 머지해 Vercel 프로덕션(https://robot-surgery-ai.vercel.app/)에 반영
 - [ ] 데모 신청 폼 백엔드 연동 (현재는 프런트엔드 검증만)
 
