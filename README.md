@@ -12,7 +12,7 @@
 
 1. [미리보기 / 배포](#1-미리보기--배포)
 2. [프로젝트 구조](#2-프로젝트-구조)
-3. [웹사이트 구성 (섹션별 설명)](#3-웹사이트-구성-섹션별-설명)
+3. [페이지 구성](#3-페이지-구성)
 4. [인터랙션 & 프런트엔드 기술](#4-인터랙션--프런트엔드-기술)
 5. [Blender 수술 장면](#5-blender-수술-장면)
 6. [렌더링 & 영상 인코딩 방법](#6-렌더링--영상-인코딩-방법)
@@ -37,43 +37,65 @@
 
 ## 2. 프로젝트 구조
 
+메뉴마다 **개별 페이지(개별 URL)** 를 가지는 멀티 페이지 정적 사이트입니다.
+
+| URL | 파일 | 소스 |
+|---|---|---|
+| `/` | `index.html` | `src/pages/home.html` |
+| `/platform/` | `platform/index.html` | `src/pages/platform.html` |
+| `/technology/` | `technology/index.html` | `src/pages/technology.html` |
+| `/specialties/` | `specialties/index.html` | `src/pages/specialties.html` |
+| `/outcomes/` | `outcomes/index.html` | `src/pages/outcomes.html` |
+| `/training/` | `training/index.html` | `src/pages/training.html` |
+| `/company/` | `company/index.html` | `src/pages/company.html` |
+| `/demo/` | `demo/index.html` | `src/pages/demo.html` |
+| (없는 주소) | `404.html` | `src/pages/404.html` |
+
 ```
 robot-surgery-ai/
-├── index.html                      # 단일 페이지 사이트 (모든 섹션 마크업)
+├── index.html, */index.html, 404.html   # 빌드 결과물 (직접 수정하지 말고 src/를 수정)
+├── src/pages/*.html                # 페이지별 본문 소스 (맨 위 주석에 제목·설명·히어로 문구)
+├── tools/build_site.py             # 공통 레이아웃(head·헤더·푸터·서브 히어로·다음 페이지)을 입혀 페이지 생성
+├── vercel.json                     # Vercel 설정 (cleanUrls, trailingSlash, 에셋 캐시)
 ├── assets/
-│   ├── css/style.css               # 전체 스타일 (다크 클리니컬 테마, 반응형, reduced-motion 대응)
-│   ├── js/main.js                  # 인터랙션 (히어로 패럴랙스·HUD, 떨림 필터 데모, 탭, 카운터, 폼)
-│   ├── img/favicon.svg             # 파비콘 (브랜드 마크)
-│   └── media/                      # Blender 렌더 결과물
-│       ├── hero-poster.jpg         # 히어로 정지 이미지 (1920×1080, 96 samples)
-│       ├── macro.jpg               # 니들 드라이버 접사 이미지 (1600×900)
-│       ├── hero.mp4                # 히어로 루프 영상 H.264 (렌더 완료 후 추가)
-│       └── hero.webm               # 히어로 루프 영상 VP9  (렌더 완료 후 추가)
-├── blender/
-│   ├── build_surgical_scene.py     # Blender 장면 절차 생성 + 렌더 실행 스크립트
-│   └── encode_hero.sh              # PNG 시퀀스 → 웹 영상/포스터 인코딩 (ffmpeg)
+│   ├── css/style.css               # 전체 스타일
+│   ├── js/main.js                  # 인터랙션 (페이지에 해당 요소가 있을 때만 동작)
+│   ├── img/favicon.svg
+│   └── media/                      # Blender 렌더 결과물 (hero-poster.jpg, macro.jpg, hero.mp4/webm)
+└── blender/
+    ├── build_surgical_scene.py     # Blender 장면 절차 생성 + 렌더
+    └── encode_hero.sh              # PNG 시퀀스 → 웹 영상/포스터
 ```
 
-빌드 도구나 프레임워크 없이 **순수 HTML / CSS / JavaScript**로 작성되어, 정적 파일 호스팅이면 어디서든 그대로 동작합니다. 외부 의존성은 Google Fonts(Manrope, JetBrains Mono) 하나뿐입니다.
+### 페이지 빌드
+
+```bash
+python3 tools/build_site.py
+```
+
+- 공통 헤더/푸터/`<head>`는 `tools/build_site.py`에 한 번만 정의되어 모든 페이지에 똑같이 들어갑니다.
+- 현재 페이지 메뉴에는 `aria-current="page"`가 자동으로 붙어 밑줄로 표시됩니다.
+- 서브 페이지에는 페이지 히어로(브레드크럼, 제목, 소개문, Blender 렌더 배경)와 하단 **다음 페이지 / 데모 신청** 링크가 자동으로 붙습니다.
+- 링크·에셋 경로는 상대 경로(`../assets/...`)로 생성되므로 Vercel, GitHub Pages(하위 경로), 로컬 서버 어디서나 동작합니다.
+- 빌드 결과물(HTML)도 저장소에 커밋합니다. Vercel은 별도 빌드 없이 그대로 배포합니다.
 
 ---
 
-## 3. 웹사이트 구성 (섹션별 설명)
+## 3. 페이지 구성
 
-| # | 섹션 (앵커) | 내용 |
-|---|---|---|
-| 1 | **Header** | 로고, 내비게이션(Platform · Technology · Specialties · Outcomes · Training · Company), "Request a demo" CTA. 스크롤하면 반투명 블러 배경으로 바뀌고, 현재 보고 있는 섹션이 하이라이트됨. 1080px 이하에서는 햄버거 메뉴로 전환 |
-| 2 | **Hero** | Blender 렌더 영상(또는 포스터)이 전체 화면 배경으로 깔림. 헤드라인 *"Precision beyond the human hand."*, 서브카피, CTA 2개. 그 위에 **서전 콘솔 HUD** 오버레이(LIVE 표시, 경과 시간, 모션 스케일링, 떨림 필터, 팁 힘(N), 손목 각도, 팁 정밀도, 로봇 팔 3개의 장착 기구, 니들 드라이버를 따라가는 조준 레티클) |
-| 3 | **Spec strip** | 핵심 사양 4개(0.1 mm 모션 분해능, 7 DOF 손목, 10:1 모션 스케일링, 4K 3D 비전). 화면에 들어오면 숫자 카운트업 |
-| 4 | **Platform** `#platform` | 시스템 3요소(Arc Console / Arc Patient Cart / Arc Vision Tower) 카드. 카드는 마우스를 따라가는 스포트라이트 효과 |
-| 5 | **MicroWrist** `#microwrist` | Blender 접사 렌더 이미지와 기구 사양표(손목 굴곡 ±90°, 540° 회전, 8 mm/5 mm 샤프트, 40+ 기구) |
-| 6 | **Technology** `#technology` | **인터랙티브 "Motion engine" 데모**(아래 4장) + 기술 6가지(RCM, 햅틱 피드백, AI 장면 이해, 형광 영상, 충돌 회피, 데이터 인사이트) |
-| 7 | **Specialties** `#specialties` | 진료과 탭(일반·대장항문 / 비뇨의학 / 부인과 / 흉부 / 미세·재건). 키보드 좌우 화살표로 탭 이동 가능 |
-| 8 | **Outcomes** `#outcomes` | 성과 지표 4개(재원일수, 개복 전환율 등). **모두 예시 수치**이며 각주로 명시 |
-| 9 | **Training** `#training` | 실제 순서가 있는 4단계 교육 과정(Simulate → Practice → Proctor → Improve) |
-| 10 | **Company** `#company` | 회사 소개, 주요 수치, 최신 소식 카드 3개 |
-| 11 | **Demo** `#demo` | 데모 신청 폼(이름, 이메일, 기관, 역할, 진료과, 메시지). 프런트엔드 검증만 하고 서버 전송은 없음 |
-| 12 | **Footer** | 사이트맵, 저작권, 가상 회사 고지, Blender 렌더 출처 |
+| 페이지 | 내용 |
+|---|---|
+| **공통 헤더** | 로고, 메뉴(Platform · Technology · Specialties · Outcomes · Training · Company), "Request a demo". 현재 페이지 표시, 스크롤 시 블러 배경, 1080px 이하 햄버거 메뉴 |
+| **홈 `/`** | Blender 렌더 히어로 + 서전 콘솔 HUD, 핵심 사양 4개, 각 페이지로 가는 소개 타일 6개, 데모 신청 CTA |
+| **Platform `/platform/`** | 시스템 3요소(Arc Console / Patient Cart / Vision Tower), MicroWrist 기구 섹션(`#microwrist`, 접사 렌더 + 사양표) |
+| **Technology `/technology/`** | 인터랙티브 "Motion engine" 데모 + 기술 6가지 |
+| **Specialties `/specialties/`** | 진료과 탭 5개와 대표 술식 |
+| **Outcomes `/outcomes/`** | 측정 항목(환자·외과의·병원) + 성과 지표 4개 (**예시 수치**, 각주 명시) |
+| **Training `/training/`** | 4단계 교육 과정 |
+| **Company `/company/`** | 회사 이야기, 주요 수치, 최신 소식(`#news`) |
+| **Demo `/demo/`** | 데모 신청 폼 (프런트엔드 검증만, 서버 전송 없음) |
+| **404** | 없는 주소 안내 페이지 |
+| **공통 푸터** | 사이트맵, 저작권, 가상 회사 고지, Blender 렌더 출처 |
 
 ---
 
@@ -208,7 +230,7 @@ python3 -m http.server 8000
 # http://localhost:8000 접속
 ```
 
-`index.html`을 브라우저로 바로 열어도 동작합니다.
+폴더형 URL(`/platform/`)을 쓰므로 `file://`로 직접 열기보다 로컬 서버로 확인하는 것을 권장합니다.
 
 ---
 
@@ -225,7 +247,8 @@ python3 -m http.server 8000
 
 - Framework Preset: **Other**
 - Build Command: 비움 (빌드 없음)
-- Output Directory: 비움 또는 `.` (루트의 `index.html`을 그대로 서비스)
+- Output Directory: 비움 또는 `.` (루트의 HTML을 그대로 서비스)
+- `vercel.json`: `cleanUrls`, `trailingSlash`(모든 페이지를 `/platform/` 형태로 통일), `/assets/` 캐시 헤더
 - Install Command: 비움
 
 **주의:** 프로덕션 주소는 `main` 브랜치만 반영합니다. 작업 브랜치에만 코드가 있으면 프로덕션 주소에서 `404: NOT_FOUND`가 납니다. PR을 `main`에 머지하면 자동으로 재배포됩니다.

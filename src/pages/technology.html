@@ -1,0 +1,76 @@
+<!--
+title: Technology
+description: Tremor filtering, motion scaling, haptic feedback and AI scene understanding: the Lumenara motion engine.
+eyebrow: Technology
+heading: Your intent, minus the tremor.
+lead: Every hand movement at the console passes through Lumenara's real-time motion engine. Physiological tremor is filtered out, motion is scaled down, and the instrument tip follows only what the surgeon means to do.
+image: media/hero-poster.jpg
+position: 62% 55%
+-->
+    <section class="section technology">
+          <div class="container">
+
+            <div class="lab reveal">
+              <div class="lab__canvas">
+                <canvas id="tremor-canvas" aria-label="Interactive demonstration: surgeon hand path compared with filtered robotic instrument path" role="img"></canvas>
+                <div class="lab__legend">
+                  <span><i class="sw sw--hand"></i> Surgeon hand input</span>
+                  <span><i class="sw sw--robot"></i> Instrument tip output</span>
+                </div>
+              </div>
+              <div class="lab__controls">
+                <h3>Try the motion engine</h3>
+                <p>Move your cursor (or finger) over the panel. Adjust scaling and filtering to see how a natural hand path becomes a steady, sub-millimetre instrument path.</p>
+                <label class="range">
+                  <span>Motion scaling <output id="scale-out">5 : 1</output></span>
+                  <input type="range" id="scale" min="1" max="10" step="1" value="5">
+                </label>
+                <label class="range">
+                  <span>Tremor filtering <output id="filter-out">High</output></span>
+                  <input type="range" id="filter" min="0" max="3" step="1" value="2">
+                </label>
+                <label class="toggle">
+                  <input type="checkbox" id="tremor-sim" checked>
+                  <span>Simulate 8–12 Hz physiological tremor</span>
+                </label>
+                <div class="lab__readout">
+                  <div><small>Hand jitter</small><b id="jit-in">—</b></div>
+                  <div><small>Tip jitter</small><b id="jit-out">—</b></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="features">
+              <article class="feature reveal">
+                <span class="feature__num">01</span>
+                <h3>Remote centre of motion</h3>
+                <p>Arms pivot around a software-locked point at the incision or port, so the body wall never takes the strain of instrument movement.</p>
+              </article>
+              <article class="feature reveal">
+                <span class="feature__num">02</span>
+                <h3>Haptic force feedback</h3>
+                <p>Strain sensors at the wrist return tissue and suture tension to the surgeon's hands — knots stay secure, tissue stays intact.</p>
+              </article>
+              <article class="feature reveal">
+                <span class="feature__num">03</span>
+                <h3>AI scene understanding</h3>
+                <p>On-device models segment tissue planes, vessels and instruments in real time, highlighting critical structures before they're touched.</p>
+              </article>
+              <article class="feature reveal">
+                <span class="feature__num">04</span>
+                <h3>Fluorescence imaging</h3>
+                <p>Near-infrared ICG overlays reveal perfusion and anatomy in a single click — confirm blood supply before you close.</p>
+              </article>
+              <article class="feature reveal">
+                <span class="feature__num">05</span>
+                <h3>Collision-aware arms</h3>
+                <p>A live kinematic model of all four arms prevents clashes and keeps assistants safe at the bedside.</p>
+              </article>
+              <article class="feature reveal">
+                <span class="feature__num">06</span>
+                <h3>Connected insights</h3>
+                <p>Secure case analytics turn every procedure into a learning opportunity — for surgeons, teams and hospital leadership.</p>
+              </article>
+            </div>
+          </div>
+        </section>
