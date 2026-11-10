@@ -17,7 +17,7 @@
 5. [Blender 수술 장면](#5-blender-수술-장면)
 6. [렌더링 & 영상 인코딩 방법](#6-렌더링--영상-인코딩-방법)
 7. [로컬 실행](#7-로컬-실행)
-8. [GitHub Pages 배포](#8-github-pages-배포)
+8. [Vercel 배포](#8-vercel-배포)
 9. [디자인 시스템](#9-디자인-시스템)
 10. [접근성 · 반응형 · 성능](#10-접근성--반응형--성능)
 11. [현재 상태 & 향후 작업](#11-현재-상태--향후-작업)
@@ -30,7 +30,7 @@
 | 구분 | 위치 |
 |---|---|
 | 호스팅 미리보기 (Claude Artifact) | https://claude.ai/artifact/JbP5KekEEfGqXyF725QAWs (비공개 링크, 소유자가 Share 메뉴에서 공유 필요) |
-| GitHub Pages | Pages 활성화 후 `https://moonsookim-ai.github.io/robot-surgery-ai/` ([8장](#8-github-pages-배포) 참고) |
+| Vercel (프로덕션) | https://robot-surgery-ai.vercel.app/ (`main` 브랜치 기준, [8장](#8-vercel-배포) 참고) |
 | 로컬 | `python3 -m http.server 8000` → http://localhost:8000 |
 
 ---
@@ -52,7 +52,6 @@ robot-surgery-ai/
 ├── blender/
 │   ├── build_surgical_scene.py     # Blender 장면 절차 생성 + 렌더 실행 스크립트
 │   └── encode_hero.sh              # PNG 시퀀스 → 웹 영상/포스터 인코딩 (ffmpeg)
-└── .github/workflows/pages.yml     # GitHub Pages 자동 배포 워크플로
 ```
 
 빌드 도구나 프레임워크 없이 **순수 HTML / CSS / JavaScript**로 작성되어, 정적 파일 호스팅이면 어디서든 그대로 동작합니다. 외부 의존성은 Google Fonts(Manrope, JetBrains Mono) 하나뿐입니다.
@@ -213,19 +212,25 @@ python3 -m http.server 8000
 
 ---
 
-## 8. GitHub Pages 배포
+## 8. Vercel 배포
 
-`.github/workflows/pages.yml`이 푸시될 때마다 `index.html`과 `assets/`를 묶어 GitHub Pages로 배포합니다.
+이 저장소는 Vercel과 GitHub로 연동되어 있습니다 (프로젝트 `robot-surgery-ai`).
 
-**최초 1회 저장소 설정이 필요합니다** (워크플로 토큰으로는 Pages를 켤 수 없음):
+| 브랜치 | 배포 종류 | 주소 |
+|---|---|---|
+| `main` | **프로덕션** | https://robot-surgery-ai.vercel.app/ |
+| 그 외 브랜치 / PR | 프리뷰 | PR에 vercel[bot]이 남기는 Preview 링크 (기본적으로 Vercel 로그인 보호가 걸려 있음) |
 
-1. 저장소 **Settings → Pages → Build and deployment → Source** 를 **GitHub Actions** 로 변경
-2. `main` 이외의 브랜치에서 배포하려면 **Settings → Environments → github-pages** 의 배포 브랜치 규칙에 해당 브랜치 추가
-3. **Actions** 탭에서 "Deploy site to GitHub Pages" 워크플로를 다시 실행 (또는 새로 푸시)
+**Vercel 프로젝트 설정 (정적 사이트)**
 
-배포 주소: `https://moonsookim-ai.github.io/robot-surgery-ai/`
+- Framework Preset: **Other**
+- Build Command: 비움 (빌드 없음)
+- Output Directory: 비움 또는 `.` (루트의 `index.html`을 그대로 서비스)
+- Install Command: 비움
 
-정적 사이트라 Netlify, Vercel, Cloudflare Pages 등에서도 빌드 설정 없이 루트 폴더를 그대로 배포하면 됩니다.
+**주의:** 프로덕션 주소는 `main` 브랜치만 반영합니다. 작업 브랜치에만 코드가 있으면 프로덕션 주소에서 `404: NOT_FOUND`가 납니다. PR을 `main`에 머지하면 자동으로 재배포됩니다.
+
+정적 사이트라 Netlify, Cloudflare Pages, GitHub Pages 등에서도 빌드 설정 없이 루트 폴더를 그대로 배포하면 됩니다.
 
 ---
 
@@ -257,7 +262,7 @@ python3 -m http.server 8000
 - [x] Blender 절차 생성 장면 + 히어로 포스터 / 접사 렌더
 - [x] 데스크톱(1440×900) · 모바일(390×844) 스크린샷 검증
 - [ ] 히어로 4초 루프 영상(`hero.mp4`, `hero.webm`) — 렌더 진행 중. 완료되면 `assets/media/`에 추가. 그 전까지는 히어로에 포스터 이미지가 표시됨
-- [ ] GitHub Pages 활성화 (저장소 설정 필요, 8장 참고)
+- [ ] PR을 `main`에 머지해 Vercel 프로덕션(https://robot-surgery-ai.vercel.app/)에 반영
 - [ ] 데모 신청 폼 백엔드 연동 (현재는 프런트엔드 검증만)
 
 ---
